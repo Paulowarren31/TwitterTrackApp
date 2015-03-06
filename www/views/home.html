@@ -1,5 +1,5 @@
 <ion-side-menus>
-  <ion-side-menu side="right">
+  <ion-side-menu side="left">
       <ion-content padding="false" scroll="false" class="has-header">
 
 
@@ -51,9 +51,11 @@
 
         <div class="card">
           <div class="item item-text-wrap">
-            <p align="center">you are tracking {{handle}}<br/>
-                              in {{tweets[0].place.full_name}} 
+            <p align="center"><div ng-show="tweets">you are tracking {{handle}}<br/>
+                              in {{tweets[0].place.full_name}}<br/></div>
+
             </p>
+            <small ng-show="!tweets">pull from the left</small>
           </div>
         </div>
 
