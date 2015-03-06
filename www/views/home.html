@@ -1,0 +1,60 @@
+<ion-side-menus>
+  <ion-side-menu side="right">
+      <ion-content padding="false" scroll="false" class="has-header">
+
+
+            <form ng-submit="loadHandle(handleSubmit)">
+              <label class="item item-input">
+                <input type="text" ng-model="handleSubmit" placeholder="First Name">
+              </label>
+              <button type="submit" class="button button-energized button-block">Change Handle</button>
+            </form>
+
+
+        <div class="list">
+          <a class="item item-thumbnail-left" href="#">
+            <img ng-src='{{photo}}'></img>
+            <h2>{{handle}}</h2>
+            <p>{{location}}</p>
+          </a>
+        </div>
+
+
+        <ion-scroll style="height: 75%;" has-bouncing="true" direction="y">
+
+        <div ng-repeat="tweet in tweets" class="card">
+          <div class="item item-text-wrap">
+            {{tweet.text}}
+          </div>
+          <div class="item item-divider">
+            {{tweet.place.name}}
+          </div>
+        </div>
+
+      </ion-scroll>
+
+
+
+      </ion-content>
+    </ion-side-menu>
+    <ion-pane ion-side-menu-content="">
+      <ion-content padding="true" scroll="false" class="has-header">
+        <ui-gmap-google-map  center='map.center' zoom="map.zoom" options="map.options">
+          <div ng-repeat="tweet in tweets">
+            <ui-gmap-marker idkey="1" coords="{latitude: tweet.geo.coordinates[0],longitude: tweet.geo.coordinates[1]}"></ui-gmap-marker>
+            <ui-gmap-polyline path='[{latitude:tweets[$index-1].geo.coordinates[0] ,longitude:tweets[$index-1].geo.coordinates[1]}
+            ,{latitude: tweet.geo.coordinates[0],longitude: tweet.geo.coordinates[1]}]'
+          </div>
+        </ui-gmap-google-map>
+
+
+
+        <div class="card">
+          <div class="item item-text-wrap">
+            you are tracking {{handle}}
+          </div>
+        </div>
+
+      </ion-content>
+    </ion-pane>
+</ion-side-menus>
