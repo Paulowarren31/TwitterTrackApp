@@ -43,7 +43,7 @@
           <div ng-repeat="tweet in tweets">
             <ui-gmap-marker idkey="1" coords="{latitude: tweet.geo.coordinates[0],longitude: tweet.geo.coordinates[1]}"></ui-gmap-marker>
             <ui-gmap-polyline path='[{latitude:tweets[$index-1].geo.coordinates[0] ,longitude:tweets[$index-1].geo.coordinates[1]}
-            ,{latitude: tweet.geo.coordinates[0],longitude: tweet.geo.coordinates[1]}]'
+            ,{latitude: tweet.geo.coordinates[0],longitude: tweet.geo.coordinates[1]}]'></ui-gmap-polyline>
           </div>
         </ui-gmap-google-map>
 
@@ -51,7 +51,9 @@
 
         <div class="card">
           <div class="item item-text-wrap">
-            you are tracking {{handle}}
+            <p align="center">you are tracking {{handle}}<br/>
+                              in {{tweets[0].place.full_name}} 
+            </p>
           </div>
         </div>
 

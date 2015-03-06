@@ -49,7 +49,8 @@ app.controller('mainCtrl',function($scope,$http){
         $scope.photo=$scope.photo.replace('_normal','')
         $scope.handle=data[0].user.screen_name;
         $scope.location=data[0].place.full_name;
-
+        $scope.map.center.latitude=data[0].geo.coordinates[0]
+        $scope.map.center.longitude=data[0].geo.coordinates[1]
       })
   }
 
